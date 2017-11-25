@@ -1,15 +1,41 @@
-.stock-row{
-    height: 30px;
-    line-height: 30px;
+body{
+    font-family: 'Open Sans', sans-serif;
 }
+
+.app-title{
+    color:#159957;
+    text-align: center;
+}
+
+.stock-row{
+    height: 40px;
+    line-height: 40px;
+}
+
+.stock-row span{
+    padding: 5px 15px;
+}
+
 .stock-name,.stock-price{
     display: inline-block;
 }
 
 .stock-name{
-    width: 50px;
+    width: 70px;
+    text-transform: uppercase;
 }
 
 .stock-price{
-    width: 70px;
+    width: 100px;
+    font-weight: 600;
+}
+
+.stock-price-increase{
+    background-color: #159957;
+    color: #FFF;
+}
+
+.stock-price-decrease{
+    background-color: #870d0d;
+    color: #FFF;
 }

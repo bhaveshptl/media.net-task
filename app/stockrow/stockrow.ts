@@ -53,7 +53,6 @@ export class StockRow {
                 oStockRow.elmLastUpdate.innerHTML = "A few Seconds Ago";
             }
             else if (time / (60 * 60) < 1) {
-                //oStockRow.elmLastUpdate.innerHTML = "00:" + (parseInt((time / 60).toFixed(0)) < 10 ? "0" + (time / 60).toFixed(0) : (time / 60).toFixed(0));
                 oStockRow.elmLastUpdate.innerHTML = parseInt((time / 60).toFixed(0)) + " minutes ago";
             }
             else if (time / (60 * 60 * 60) < 1) {
@@ -64,7 +63,7 @@ export class StockRow {
                     oStockRow.elmLastUpdate.innerHTML = oStockRow.getDayMonthFromDate(oStockRow.updateTime) + " " + oStockRow.getTimeFromDate(oStockRow.updateTime, true);
                 }
             }
-        }, 1000);
+        }, 60000);
     }
 
     isDateToday(oDate: Date): boolean {
@@ -95,11 +94,17 @@ export class StockRow {
     updateData(strName: string, strPrice: string): void {
         let oStockRow: StockRow = this;
 
+        // let a: boolean = Math.random() * 10 > 5;
+        // let pr:number = parseFloat(parseFloat(strPrice).toFixed(2));
+        // strPrice = a ? (pr += 0.1).toString() : (pr -= 0.1).toString();
+
         oStockRow.updateTime = new Date();
-        oStockRow.previousPrice = oStockRow.price;
         oStockRow.price = strPrice;
 
+        oStockRow.renderStockData(strName, strPrice, oStockRow.getLastUpdatedTime());
         oStockRow.setHistory(oStockRow.price, oStockRow.updateTime);
+
+        oStockRow.previousPrice = oStockRow.price;
     }
 
     renderStockData(strName: string, strPrice: string, strLastUpdatedTime: string): void {
@@ -107,7 +112,22 @@ export class StockRow {
 
         oStockRow.elmName.innerHTML = strName;
         oStockRow.elmPrice.innerHTML = parseFloat(strPrice).toFixed(2);
-        oStockRow.elmLastUpdate.innerHTML = parseInt(strLastUpdatedTime) < 60 ? "A few Seconds Ago" : strLastUpdatedTime;
+        if (parseInt(strLastUpdatedTime) < 60) {
+            oStockRow.elmLastUpdate.innerHTML = "A few Seconds Ago";
+        }
+        
+        if (oStockRow.previousPrice) {
+            if(parseFloat(strPrice).toFixed(2) != parseFloat(oStockRow.previousPrice).toFixed(2)){
+                oStockRow.elmPrice.classList.remove("stock-price-increase");
+                oStockRow.elmPrice.classList.remove("stock-price-decrease");
+            }        
+            if (parseFloat(strPrice).toFixed(2) > parseFloat(oStockRow.previousPrice).toFixed(2)) {
+                oStockRow.elmPrice.classList.add("stock-price-increase");
+            }
+            else if (parseFloat(strPrice).toFixed(2) < parseFloat(oStockRow.previousPrice).toFixed(2)) {
+                oStockRow.elmPrice.classList.add("stock-price-decrease");
+            }
+        }        
     }
 
     setHistory(strPrice: string, strTime: Date): void {
