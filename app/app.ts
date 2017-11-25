@@ -1,6 +1,9 @@
+import { Engine } from "./engine/engine";
+
 export class Application {
-    constructor() {        
-        document.getElementById("app").innerHTML = "HelloWorld!!";
+    constructor() {
+        var oEngine = new Engine();
+        oEngine.start();
     }
 }
 window.onload = function () {
