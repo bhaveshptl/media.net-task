@@ -1,1 +1,1 @@
-export const HOST_URL = "wss://stocks.mnet.website";
+export const HOST_URL = "ws://stocks.mnet.website";
