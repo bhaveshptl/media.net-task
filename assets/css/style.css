@@ -1,0 +1,15 @@
+.stock-row{
+    height: 30px;
+    line-height: 30px;
+}
+.stock-name,.stock-price{
+    display: inline-block;
+}
+
+.stock-name{
+    width: 50px;
+}
+
+.stock-price{
+    width: 70px;
+}

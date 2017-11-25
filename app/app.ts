@@ -3,7 +3,7 @@ import { Engine } from "./engine/engine";
 export class Application {
     constructor() {
         var oEngine = new Engine();
-        oEngine.start();
+        document.getElementById("app").appendChild(oEngine.start());
     }
 }
 window.onload = function () {

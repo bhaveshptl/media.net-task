@@ -4,15 +4,19 @@ import { StockTable } from "../stocktable/stocktable";
 
 export class Engine {
 
-    oStockTable: StockTable;    
+    oStockTable: StockTable;
+
+    element: HTMLElement = document.createElement("div");
 
     constructor() {
     }
 
-    start() {
+    start(): Element {
         let oEngine: Engine = this;
         
-        oEngine.setData();        
+        oEngine.setData();
+
+        return oEngine.element;
     }
 
     setData(): void {
@@ -34,7 +38,8 @@ export class Engine {
         let oEngine: Engine = this;
         
         if (!oEngine.oStockTable) {
-            oEngine.oStockTable = new StockTable();            
+            oEngine.oStockTable = new StockTable();
+            oEngine.element.appendChild(oEngine.oStockTable.element);
         }
 
         oEngine.oStockTable.setData((<any>event).data);

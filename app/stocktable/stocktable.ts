@@ -5,9 +5,13 @@ export class StockTable {
 
     stockMap: Array<StockMap> = new Array();
 
-    stockRow: Array<StockRow> = new Array();    
+    stockRow: Array<StockRow> = new Array();
+    element: HTMLElement = document.createElement("div");
 
     constructor() {
+        let oStockTable: StockTable = this;
+
+        oStockTable.element.className = "stock-table";
     }
 
     setData(stockRate: string): void {
@@ -31,7 +35,8 @@ export class StockTable {
             }
 
             if (!bFound) {
-                oStockTable.stockRow.push(new StockRow(oStockTable.stockMap[i].name, oStockTable.stockMap[i].price));                
+                oStockTable.stockRow.push(new StockRow(oStockTable.stockMap[i].name, oStockTable.stockMap[i].price));
+                oStockTable.element.appendChild(oStockTable.stockRow[oStockTable.stockRow.length - 1].element);
             }
         }
     }
