@@ -1,0 +1,22 @@
+{
+  "name": "media.net",
+  "version": "1.0.0",
+  "dependencies": {
+    "typescript": "^2.6.1",
+    "ts-loader": "^3.1.1"
+  },
+  "devDependencies": {
+    "ts-loader": "^3.1.1",
+    "typescript": "^2.6.1",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
+  },
+  "scripts": {
+    "build": "webpack-dev-server",
+    "build:prod": "webpack -p",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
