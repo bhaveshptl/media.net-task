@@ -7,13 +7,18 @@ body{
     text-align: center;
 }
 
-.stock-row{
-    height: 40px;
+.stock-table{
+    width: 401px;
+    margin: auto;
+}
+
+.stock-row{    
+    margin: 5px 0px;
     line-height: 40px;
 }
 
 .stock-row span{
-    padding: 5px 15px;
+    padding: 0 15px;
 }
 
 .stock-name,.stock-price{
@@ -28,14 +33,19 @@ body{
 .stock-price{
     width: 100px;
     font-weight: 600;
+    text-align: center;
 }
 
-.stock-price-increase{
+.stock-price-increase,
+.stock-price-decrease{    
+    color: #FFF;
+    border-radius: 6px;    
+}
+
+.stock-price-increase{        
     background-color: #159957;
-    color: #FFF;
 }
 
-.stock-price-decrease{
-    background-color: #870d0d;
-    color: #FFF;
+.stock-price-decrease{        
+    background-color: #ff0000;
 }
