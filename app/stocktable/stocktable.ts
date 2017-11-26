@@ -21,6 +21,7 @@ export class StockTable {
         oStockTable.element.appendChild(oStockTable.createTableHeader());
     }
 
+    /// It will create header of table. i.e. | Ticker | Price | Last Update |
     createTableHeader(): HTMLElement {
         let oStockTable: StockTable = this;        
 
@@ -42,10 +43,13 @@ export class StockTable {
         return elmHeader;
     }
 
+    /// It will set and update stock data to stockrow. If stock row is already create for stock then it will just update it
+    /// otherwise it will create stock row for stock.
     setData(stockRate: string): void {
         let oStockTable: StockTable = this;
         let lstStockRate = JSON.parse(stockRate);
 
+        /// It will find unique stock list to create or update.
         lstStockRate.forEach((element: any, index: number) => {
             if (oStockTable.stockMap.filter(stock => stock.name == element[0]).length == 0) {
                 oStockTable.stockMap.push(new StockMap(element[0], element[1]));

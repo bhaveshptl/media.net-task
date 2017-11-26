@@ -28,6 +28,7 @@ export class StockRow {
         oStockRow.watchLastUpdate();
     }
 
+    /// It will add all HtmlElements to row element.
     addElements(): void {
         var oStockRow: StockRow = this;
 
@@ -42,6 +43,7 @@ export class StockRow {
         oStockRow.element.appendChild(oStockRow.elmLastUpdate);
     }
 
+    /// It will start watching stock updated time to display last updated time.
     watchLastUpdate(): void {
         var oStockRow: StockRow = this;
 
@@ -66,6 +68,7 @@ export class StockRow {
         }, 60000);
     }
 
+    /// It will return true if given date is today else false.
     isDateToday(oDate: Date): boolean {
         if (new Date().getFullYear() == oDate.getFullYear()
             && new Date().getMonth() == oDate.getMonth()
@@ -75,6 +78,7 @@ export class StockRow {
         return false;
     }
 
+    /// It will return in format of 12hrs/24hrs i.e. 02:01 pm / 14:01
     getTimeFromDate(oDate: Date, bIs12hr?: boolean): string {
         if (bIs12hr) {
             return oDate.toLocaleTimeString().split(":")[0] + ":"
@@ -87,16 +91,19 @@ export class StockRow {
         }
     }
 
+    /// It will return day and month in format of dd mon. i.e 25 Dec
     getDayMonthFromDate(oDate: Date): string {
         return oDate.toDateString().split(" ")[2] + " " + oDate.toDateString().split(" ")[1];
     }
 
+    /// It will update stock price to view and maintain history of stock.
     updateData(strName: string, strPrice: string): void {
         let oStockRow: StockRow = this;
 
-        let a: boolean = Math.random() * 10 > 5;
-        let pr:number = parseFloat(parseFloat(strPrice).toFixed(2));
-        strPrice = a ? (pr += 0.1).toString() : (pr -= 0.1).toString();
+        /// Chnage stock price manually to check increase and decrease price of stock.
+        // let a: boolean = Math.random() * 10 > 5;
+        // let pr:number = parseFloat(parseFloat(strPrice).toFixed(2));
+        // strPrice = a ? (pr += 0.1).toString() : (pr -= 0.1).toString();
 
         oStockRow.updateTime = new Date();
         oStockRow.price = strPrice;
@@ -107,6 +114,7 @@ export class StockRow {
         oStockRow.previousPrice = oStockRow.price;
     }
 
+    /// It will make UI changes acorrding to price of stock.
     renderStockData(strName: string, strPrice: string, strLastUpdatedTime: string): void {
         let oStockRow: StockRow = this;
 
@@ -130,6 +138,7 @@ export class StockRow {
         }        
     }
 
+    /// It will store previous price of stock to maintain history.
     setHistory(strPrice: string, strTime: Date): void {
         let oStockRow: StockRow = this;
 
@@ -139,6 +148,7 @@ export class StockRow {
             oStockRow.lstHistory.push([oStockRow.price, oStockRow.updateTime]);
     }
 
+    /// It will return time difference of last updated time and current time in milliseconds.
     getLastUpdatedTime(): string {
         let oStockRow: StockRow = this;
 

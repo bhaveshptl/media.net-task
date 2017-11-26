@@ -2,8 +2,7 @@ var webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  entry: [
-    'webpack-hot-middleware/client',
+  entry: [    
     './app/app.ts',
   ],
 

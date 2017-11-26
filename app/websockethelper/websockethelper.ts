@@ -1,3 +1,4 @@
+/// Create singlton class to send websocket request.
 export class WebSocketHelper {
 
     public static instance: WebSocketHelper;
@@ -13,6 +14,7 @@ export class WebSocketHelper {
         return WebSocketHelper.instance;
     }
 
+    /// It will create websocket connection.
     public create(url: string): WebSocket {
         var oWebSocketHelper: WebSocketHelper = this;
 
@@ -20,6 +22,7 @@ export class WebSocketHelper {
         return oWebSocketHelper.oWebSocket;
     }
 
+    /// It will register websocket events according to given option in form of JSON.
     public registerEvents(options: any) {
         var oWebSocketHelper: WebSocketHelper = this;
 
