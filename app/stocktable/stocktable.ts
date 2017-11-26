@@ -8,10 +8,38 @@ export class StockTable {
     stockRow: Array<StockRow> = new Array();
     element: HTMLElement = document.createElement("div");
 
+    elmHeader: HTMLElement = document.createElement("div");
+    elmHeaderName: HTMLElement = document.createElement("span");
+    elmHeaderPrice: HTMLElement = document.createElement("span");
+    elmHeaderLastUpdate: HTMLElement = document.createElement("span");
+
     constructor() {
         let oStockTable: StockTable = this;
 
         oStockTable.element.className = "stock-table";
+
+        oStockTable.element.appendChild(oStockTable.createTableHeader());
+    }
+
+    createTableHeader(): HTMLElement {
+        let oStockTable: StockTable = this;        
+
+        let elmHeader = document.createElement("div");
+        elmHeader.className = "stock-row-header";
+
+        oStockTable.elmHeaderName.innerText = "Ticker";
+        oStockTable.elmHeaderPrice.innerText = "Price";
+        oStockTable.elmHeaderLastUpdate.innerText = "Last Update";
+        
+        oStockTable.elmHeaderName.className = "stock-ticker";
+        oStockTable.elmHeaderPrice.className = "stock-price";
+        oStockTable.elmHeaderLastUpdate.className = "stock-last-update";
+
+        elmHeader.appendChild(oStockTable.elmHeaderName);
+        elmHeader.appendChild(oStockTable.elmHeaderPrice);
+        elmHeader.appendChild(oStockTable.elmHeaderLastUpdate);
+
+        return elmHeader;
     }
 
     setData(stockRate: string): void {

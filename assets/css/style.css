@@ -8,25 +8,31 @@ body{
 }
 
 .stock-table{
+    display: table;
     width: 401px;
     margin: auto;
 }
 
-.stock-row{    
+.stock-row,
+.stock-row-header{        
     margin: 5px 0px;
     line-height: 40px;
+    display: table-row;
 }
 
-.stock-row span{
-    padding: 0 15px;
-}
-
-.stock-name,.stock-price{
+/* .stock-name,
+.stock-price{
     display: inline-block;
+} */
+
+.stock-name, .stock-price,
+.stock-last-update, .stock-ticker{
+    padding: 0 15px;
+    display: table-cell;    
 }
 
 .stock-name{
-    width: 70px;
+    width: 70px;    
     text-transform: uppercase;
 }
 

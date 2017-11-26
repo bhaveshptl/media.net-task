@@ -13,10 +13,10 @@ export class WebSocketHelper {
         return WebSocketHelper.instance;
     }
 
-    public create(url: string, protocol?: any): WebSocket {
+    public create(url: string): WebSocket {
         var oWebSocketHelper: WebSocketHelper = this;
-        oWebSocketHelper.oWebSocket = new WebSocket(url, protocol);
 
+        oWebSocketHelper.oWebSocket = new WebSocket(url);        
         return oWebSocketHelper.oWebSocket;
     }
 

@@ -35,7 +35,7 @@ export class StockRow {
 
         oStockRow.elmName.className = "stock-name";
         oStockRow.elmPrice.className = "stock-price";
-        oStockRow.elmLastUpdate.className = "last-updated";
+        oStockRow.elmLastUpdate.className = "stock-last-update";
 
         oStockRow.element.appendChild(oStockRow.elmName);
         oStockRow.element.appendChild(oStockRow.elmPrice);
@@ -94,9 +94,9 @@ export class StockRow {
     updateData(strName: string, strPrice: string): void {
         let oStockRow: StockRow = this;
 
-        // let a: boolean = Math.random() * 10 > 5;
-        // let pr:number = parseFloat(parseFloat(strPrice).toFixed(2));
-        // strPrice = a ? (pr += 0.1).toString() : (pr -= 0.1).toString();
+        let a: boolean = Math.random() * 10 > 5;
+        let pr:number = parseFloat(parseFloat(strPrice).toFixed(2));
+        strPrice = a ? (pr += 0.1).toString() : (pr -= 0.1).toString();
 
         oStockRow.updateTime = new Date();
         oStockRow.price = strPrice;
