@@ -1,6 +1,6 @@
 var express = require('express');
 var path = require('path');
-// const WebSocket = require('ws');
+const WebSocket = require('ws');
 
 // var WEB_SOCKET_URL = "ws://stocks.mnet.website";
 
@@ -28,18 +28,18 @@ var filename = path.resolve(__dirname, '..', 'index.html');
 app.get('/', function (req, res) {
     res.sendFile(filename);
 });
-
-// var ws;
-// var WebSocketServer = require('ws').Server;
-// var wss = new WebSocket.Server({ port: 1234 });
-// wss.on('connection', function () {
-//     ws = new WebSocket(WEB_SOCKET_URL);
-//     ws.onmessage = (event) => {
-//         wss.clients.forEach((clients) => {
-//             clients.send(event.data);
-//         });
-//     }
-// });
+/// It will create an application server through which we can 
+var ws;
+var WebSocketServer = require('ws').Server;
+var wss = new WebSocket.Server({ port: 1234 });
+wss.on('connection', function () {
+    ws = new WebSocket(WEB_SOCKET_URL);
+    ws.onmessage = (event) => {
+        wss.clients.forEach((clients) => {
+            clients.send(event.data);
+        });
+    }
+});
 
 //Server Listening....
 var port = process.env.PORT || 5000;
