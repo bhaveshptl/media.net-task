@@ -1,5 +1,5 @@
 import { WebSocketHelper } from "../websockethelper/websockethelper";
-import { HOST_URL } from "../constants/constants";
+import { HOST_URL, NODE_SERVER_URL } from "../constants/constants";
 import { StockTable } from "../stocktable/stocktable";
 
 export class Engine {
@@ -50,13 +50,13 @@ export class Engine {
     }
 
     /// Handler to handle connection open.
-    onConnectionOpen = (event: Event) => {                
+    onConnectionOpen = (event: Event) => {
         console.log("Connection established successfully");
     }
 
-    showApplication():void{
+    showApplication(): void {
         let oEngine: Engine = this;
-        if(!oEngine.bAppLoaded){
+        if (!oEngine.bAppLoaded) {
             oEngine.element.style.display = "";
             oEngine.bAppLoaded = true;
             document.getElementById("app-loader").style.display = "none";

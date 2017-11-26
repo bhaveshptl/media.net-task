@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 const WebSocket = require('ws');
 
-// var WEB_SOCKET_URL = "ws://stocks.mnet.website";
+var WEB_SOCKET_URL = "ws://stocks.mnet.website";
 
 //Init App Instance
 var app = express();
