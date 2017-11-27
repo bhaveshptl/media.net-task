@@ -23,7 +23,7 @@ export class StockTable {
 
     /// It will create header of table. i.e. | Ticker | Price | Last Update |
     createTableHeader(): HTMLElement {
-        let oStockTable: StockTable = this;        
+        let oStockTable: StockTable = this;
 
         let elmHeader = document.createElement("div");
         elmHeader.className = "stock-row-header";
@@ -31,7 +31,7 @@ export class StockTable {
         oStockTable.elmHeaderName.innerText = "Ticker";
         oStockTable.elmHeaderPrice.innerText = "Price";
         oStockTable.elmHeaderLastUpdate.innerText = "Last Update";
-        
+
         oStockTable.elmHeaderName.className = "stock-ticker";
         oStockTable.elmHeaderPrice.className = "stock-price";
         oStockTable.elmHeaderLastUpdate.className = "stock-last-update";
@@ -51,9 +51,14 @@ export class StockTable {
 
         /// It will find unique stock list to create or update.
         lstStockRate.forEach((element: any, index: number) => {
-            if (oStockTable.stockMap.filter(stock => stock.name == element[0]).length == 0) {
+            console.log(element[0] + element[1]);
+            var oCurStock: Array<StockMap> = oStockTable.stockMap.filter(stock => stock.name == element[0])
+            if (oCurStock.length == 0) {
                 oStockTable.stockMap.push(new StockMap(element[0], element[1]));
             }
+            else if(oCurStock.length == 1){
+                oCurStock[0].price = element[1];
+            }            
         });
 
         for (let i = 0; i < oStockTable.stockMap.length; i++) {
